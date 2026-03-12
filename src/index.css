@@ -1,0 +1,147 @@
+@import "tailwindcss";
+
+@font-face {
+  font-family: "Nohemi";
+  src:
+    url("./assets/fonts/nohemi/Nohemi-Thin.woff") format("woff"),
+    url("./assets/fonts/nohemi/Nohemi-Thin.ttf") format("truetype"),
+    url("./assets/fonts/nohemi/Nohemi-Thin.otf") format("opentype");
+  font-weight: 100;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Nohemi";
+  src:
+    url("./assets/fonts/nohemi/Nohemi-ExtraLight.woff") format("woff"),
+    url("./assets/fonts/nohemi/Nohemi-ExtraLight.ttf") format("truetype"),
+    url("./assets/fonts/nohemi/Nohemi-ExtraLight.otf") format("opentype");
+  font-weight: 200;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Nohemi";
+  src:
+    url("./assets/fonts/nohemi/Nohemi-Light.woff") format("woff"),
+    url("./assets/fonts/nohemi/Nohemi-Light.ttf") format("truetype"),
+    url("./assets/fonts/nohemi/Nohemi-Light.otf") format("opentype");
+  font-weight: 300;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Nohemi";
+  src:
+    url("./assets/fonts/nohemi/Nohemi-Regular.woff") format("woff"),
+    url("./assets/fonts/nohemi/Nohemi-Regular.ttf") format("truetype"),
+    url("./assets/fonts/nohemi/Nohemi-Regular.otf") format("opentype");
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Nohemi";
+  src:
+    url("./assets/fonts/nohemi/Nohemi-Medium.woff") format("woff"),
+    url("./assets/fonts/nohemi/Nohemi-Medium.ttf") format("truetype"),
+    url("./assets/fonts/nohemi/Nohemi-Medium.otf") format("opentype");
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Nohemi";
+  src:
+    url("./assets/fonts/nohemi/Nohemi-SemiBold.woff") format("woff"),
+    url("./assets/fonts/nohemi/Nohemi-SemiBold.ttf") format("truetype"),
+    url("./assets/fonts/nohemi/Nohemi-SemiBold.otf") format("opentype");
+  font-weight: 600;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Nohemi";
+  src:
+    url("./assets/fonts/nohemi/Nohemi-Bold.woff") format("woff"),
+    url("./assets/fonts/nohemi/Nohemi-Bold.ttf") format("truetype"),
+    url("./assets/fonts/nohemi/Nohemi-Bold.otf") format("opentype");
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Nohemi";
+  src:
+    url("./assets/fonts/nohemi/Nohemi-ExtraBold.woff") format("woff"),
+    url("./assets/fonts/nohemi/Nohemi-ExtraBold.ttf") format("truetype"),
+    url("./assets/fonts/nohemi/Nohemi-ExtraBold.otf") format("opentype");
+  font-weight: 800;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Nohemi";
+  src:
+    url("./assets/fonts/nohemi/Nohemi-Black.woff") format("woff"),
+    url("./assets/fonts/nohemi/Nohemi-Black.ttf") format("truetype"),
+    url("./assets/fonts/nohemi/Nohemi-Black.otf") format("opentype");
+  font-weight: 900;
+  font-style: normal;
+}
+
+@theme {
+  --font-nohemi: "Nohemi", sans-serif;
+  --font-outfit: "Outfit", sans-serif;
+
+  --breakpoint-sm: 640px;
+  --breakpoint-md: 768px;
+  --breakpoint-lg: 1024px;
+  --breakpoint-xl: 1280px;
+  --breakpoint-2xl: 1536px;
+}
+
+@utility container {
+  margin-inline: auto;
+  padding-inline: 1rem;
+  max-width: 1440px;
+
+  @variant md {
+    padding-inline: 5rem;
+  }
+}
+
+@layer components {
+  .display-3 {
+    @apply text-[32px] font-nohemi font-bold leading-[120%]  tracking-normal;
+  }
+
+  .feature-emphasis {
+    @apply text-[24px] font-outfit font-medium leading-[100%]  tracking-normal;
+  }
+
+  .highlight-standard {
+    @apply text-[18px] font-outfit font-[300] leading-[120%]  tracking-normal;
+  }
+}
+
+@keyframes up-down {
+  0% {
+    transform: translateY(-10px);
+  }
+  50% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(-10px);
+  }
+}
+
+.animation-updown {
+  animation-name: up-down;
+  animation-duration: 2s;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+  animation-fill-mode: forwards;
+}
