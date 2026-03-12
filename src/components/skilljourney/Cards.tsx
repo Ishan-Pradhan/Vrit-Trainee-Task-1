@@ -5,14 +5,27 @@ interface SlideData {
   featureEmphasis?: string;
   description: string;
   image: string;
+  imagePosition?: string;
+  textPosition?: string;
 }
 
 interface CardProps {
-  imagePosition?: string;
+  imageLocation?: string;
   slides: SlideData[];
+  color: string;
+  imagePosition?: string;
+  edgeColor?: string;
+  shadow: boolean;
 }
 
-const Cards = ({ slides, imagePosition }: CardProps) => {
+const Cards = ({
+  slides,
+  imageLocation,
+  color,
+  imagePosition,
+  edgeColor,
+  shadow,
+}: CardProps) => {
   const [carouselIndex, setCarouselIndex] = useState(0);
   const isExpandable = slides.length > 1;
   const carouselSlides = slides.slice(1);
@@ -29,34 +42,76 @@ const Cards = ({ slides, imagePosition }: CardProps) => {
 
   return (
     <div className="group relative w-full h-[341px]">
-      <div className="absolute inset-0 z-0 flex flex-col bg-[#F45B5B] rounded-[30px]   opacity-0 group-hover:opacity-100 transition-all duration-500">
+      <div
+        style={{ backgroundColor: color }}
+        className={`absolute inset-0 z-0 flex flex-col rounded-[30px]  group-hover:opacity-100 transition-all duration-500 ${carouselIndex > 0 ? "" : "opacity-0"}`}
+      >
         {isExpandable && (
           <>
-            <div className="flex gap-6 overflow-hidden justify-end h-full">
+            <div
+              className={`flex gap-6 overflow-hidden relative h-full ${carouselSlides[carouselIndex].textPosition}`}
+            >
               <img
                 src={carouselSlides[carouselIndex].image}
                 alt=""
-                className="h-[323px] w-[352px] absolute top-[18px] left-[24px]  drop-shadow-[10px_0px_0px_rgba(0,0,0,1)]"
+                className={`absolute ${shadow ? "drop-shadow-[10px_0px_0px_rgba(0,0,0,1)]" : ""} z-40 ${carouselSlides[carouselIndex].imagePosition}`}
               />
               {carouselSlides[carouselIndex].description && (
-                <p className="highlight-standard text-[#FAFAFA] w-[40%] font-nohemi font-bold leading-[120%] tracking-normal text-xl mt-20">
+                <p className="highlight-standard text-[#FAFAFA] w-[50%] font-nohemi font-bold leading-[120%] tracking-normal text-xl mt-10 px-5 z-30 ">
                   {carouselSlides[carouselIndex].description}
                 </p>
               )}
             </div>
 
-            <div className="absolute left-4 right-4 top-1/2 flex -translate-y-1/2 justify-between ">
+            <div className="absolute left-0 bg-white top-1/2 -translate-y-1/2 h-24 w-18" />
+            <div className="absolute right-0 bg-white top-1/2 -translate-y-1/2 h-24 w-18" />
+            <img
+              src={`${edgeColor}`}
+              alt=""
+              className="absolute left-0 top-1/2 -translate-y-1/2 h-28  transform scale-x-[-1] pointer-events-none after:bg-white after:h-28 after:w-28"
+            />
+
+            <img
+              src={`${edgeColor}`}
+              alt=""
+              className="absolute right-0 top-1/2 -translate-y-1/2 h-28 transform scale-x-[1] pointer-events-none"
+            />
+
+            <div className="absolute left-0 right-0 top-1/2 -translate-y-1/2 flex justify-between px-0 z-40 ">
               <button
                 onClick={prevSlide}
-                className="flex h-12 w-12 items-center justify-center rounded-full bg-white/20 text-white backdrop-blur-md transition-all hover:bg-white/40"
+                className="flex h-12 w-12 items-center justify-center rounded-full bg-white text-black shadow-lg transition-transform hover:scale-110 active:scale-95 cursor-pointer z-40"
               >
-                ←
+                <svg
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2.5"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                >
+                  <path d="M19 12H5M12 19l-7-7 7-7" />
+                </svg>
               </button>
+
               <button
                 onClick={nextSlide}
-                className="flex h-12 w-12 items-center justify-center rounded-full bg-white/20 text-white backdrop-blur-md transition-all hover:bg-white/40"
+                className="flex h-12 w-12 items-center justify-center rounded-full bg-white text-black shadow-lg transition-transform hover:scale-110 active:scale-95 z-40 cursor-pointer"
               >
-                →
+                <svg
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2.5"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                >
+                  <path d="M5 12h14M12 5l7 7-7 7" />
+                </svg>
               </button>
             </div>
           </>
@@ -64,24 +119,30 @@ const Cards = ({ slides, imagePosition }: CardProps) => {
       </div>
 
       <div
-        className={`absolute inset-0 z-10 left-0 flex flex-col items-start justify-center text-left bg-[#F45B5B]  rounded-[30px]  ${
+        style={{ backgroundColor: color }}
+        className={`absolute inset-0 z-10 left-0 flex flex-col items-start justify-center text-left rounded-[30px] ${
           isExpandable
             ? "group-hover:pointer-events-none group-hover:opacity-0 transition-all duration-500 group-hover:-translate-x-50 "
             : ""
-        }`}
+        } ${carouselIndex > 0 ? "hidden" : ""}`}
       >
         <div
-          className={`flex ${imagePosition === "right" ? "flex-row-reverse" : "flex-row"} w-full justify-end p-12`}
+          className={`flex h-full w-full items-center px-12 ${
+            imageLocation === "right"
+              ? "flex-row-reverse text-left"
+              : "flex-row text-right"
+          }`}
         >
-          <div className="w-1/3 relative">
+          <div className="relative h-full">
             <img
               src={slides[0].image}
-              alt=""
-              className="h-[370px] absolute -left-[80px] top-[45px] z-20 animation-updown"
+              alt={slides[0].title}
+              className={`absolute z-50  w-auto max-w-none animation-updown ${imagePosition}`}
             />
           </div>
-          <div className="flex flex-col gap-8 w-full text-right self-end">
-            <div className="flex flex-col gap-2.5">
+
+          <div className="flex flex-1 flex-col gap-6 ">
+            <div className="flex flex-col gap-2">
               <h1 className="display-3 text-white">{slides[0].title}</h1>
               {slides[0].featureEmphasis && (
                 <p className="feature-emphasis text-white">
@@ -89,7 +150,9 @@ const Cards = ({ slides, imagePosition }: CardProps) => {
                 </p>
               )}
             </div>
-            <p className="highlight-standard text-white/90 w-[95%] self-end">
+            <p
+              className={`highlight-standard text-white/90 w-2/3 ${imageLocation === "right" ? "self-start" : "self-end"}`}
+            >
               {slides[0].description}
             </p>
           </div>
