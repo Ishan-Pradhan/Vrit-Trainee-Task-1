@@ -121,7 +121,7 @@
   }
 
   .highlight-standard {
-    @apply text-[18px] font-outfit font-[300] leading-[120%]  tracking-normal;
+    @apply text-[18px] font-outfit font-light leading-[120%]  tracking-normal;
   }
 }
 
@@ -146,39 +146,120 @@
   animation-fill-mode: forwards;
 }
 
-/* Concave circular cutouts carved into left and right edges */
-.concave-card {
-  mask-image:
-    radial-gradient(circle 38px at 0% 50%, transparent 97%, black 100%),
-    radial-gradient(circle 38px at 100% 50%, transparent 97%, black 100%);
-  -webkit-mask-image:
-    radial-gradient(circle 38px at 0% 50%, transparent 97%, black 100%),
-    radial-gradient(circle 38px at 100% 50%, transparent 97%, black 100%);
-  mask-composite: intersect;
-  -webkit-mask-composite: source-in; /* Safari */
+@keyframes enter-from-left {
+  0% {
+    transform: translateX(-100px);
+    opacity: 0;
+  }
+  80% {
+    transform: translateX(40px);
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(0px);
+    opacity: 1;
+  }
 }
 
-/* White pill button that sits centered in each notch */
-.concave-nav-btn {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 48px;
-  height: 48px;
-  border-radius: 9999px;
-  background: white;
-  border: none;
-  cursor: pointer;
-  font-size: 18px;
-  color: #333;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.12);
-  transition:
-    box-shadow 0.2s,
-    transform 0.2s;
-  flex-shrink: 0;
+@keyframes enter-from-right {
+  0% {
+    transform: translateX(100px);
+    opacity: 0;
+  }
+  80% {
+    transform: translateX(-40px);
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(0px);
+    opacity: 1;
+  }
 }
 
-.concave-nav-btn:hover {
-  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.2);
-  transform: scale(1.08) translateX(var(--btn-nudge, 0));
+@keyframes exit-to-right {
+  0% {
+    transform: translateX(0px);
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(100px);
+    opacity: 0;
+  }
+}
+
+@keyframes exit-to-left {
+  0% {
+    transform: translateX(0px);
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(-100px);
+    opacity: 0;
+  }
+}
+
+.enter-from-left {
+  animation: enter-from-left 0.5s ease-in-out forwards;
+  animation-delay: 0.2s;
+}
+
+.enter-from-right {
+  animation: enter-from-right 0.5s ease-in-out forwards;
+  animation-delay: 0.2s;
+}
+
+.exit-to-right {
+  animation: exit-to-right 0.5s ease-in-out forwards;
+}
+
+.exit-to-left {
+  animation: exit-to-left 0.5s ease-in-out forwards;
+}
+
+@keyframes recoil-text-enter {
+  0% {
+    transform: rotate(0);
+  }
+  5% {
+    transform: rotate(-20deg);
+  }
+
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
+.recoil-text-enter {
+  animation: recoil-text-enter 0.5s ease forwards;
+}
+
+@keyframes recoil-text-exit {
+  0% {
+    transform: rotate(0deg);
+  }
+  25% {
+    transform: rotate(5deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
+.recoil-text-exit {
+  animation: recoil-text-exit 0.6s ease-in-out forwards;
+}
+
+@keyframes left-right {
+  0%,
+  100% {
+    transform: translateX(-10px);
+  }
+  100% {
+    transform: translateX(0px);
+  }
+}
+
+.group:hover .left-right {
+  animation: left-right 0.5s ease-in-out infinite alternate;
+  animation-delay: 0.2s;
 }

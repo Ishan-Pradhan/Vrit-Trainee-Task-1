@@ -1,3 +1,4 @@
+import { ArrowLeft, ArrowRight } from "lucide-react";
 import { useState } from "react";
 
 interface SlideData {
@@ -16,6 +17,7 @@ interface CardProps {
   imagePosition?: string;
   edgeColor?: string;
   shadow: boolean;
+  decors?: string;
 }
 
 const Cards = ({
@@ -25,6 +27,7 @@ const Cards = ({
   imagePosition,
   edgeColor,
   shadow,
+  decors,
 }: CardProps) => {
   const [carouselIndex, setCarouselIndex] = useState(0);
   const isExpandable = slides.length > 1;
@@ -41,7 +44,9 @@ const Cards = ({
   };
 
   return (
-    <div className="group relative w-full h-[341px]">
+    <div
+      className={`group relative w-full h-[341px] ${isExpandable ? "z-40" : "z-0"}`}
+    >
       <div
         style={{ backgroundColor: color }}
         className={`absolute inset-0 z-0 flex flex-col rounded-[30px]  group-hover:opacity-100 transition-all duration-500 ${carouselIndex > 0 ? "" : "opacity-0"}`}
@@ -82,38 +87,31 @@ const Cards = ({
                 onClick={prevSlide}
                 className="flex h-12 w-12 items-center justify-center rounded-full bg-white text-black shadow-lg transition-transform hover:scale-110 active:scale-95 cursor-pointer z-40"
               >
-                <svg
-                  width="24"
-                  height="24"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2.5"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                >
-                  <path d="M19 12H5M12 19l-7-7 7-7" />
-                </svg>
+                <ArrowLeft />
               </button>
 
               <button
                 onClick={nextSlide}
                 className="flex h-12 w-12 items-center justify-center rounded-full bg-white text-black shadow-lg transition-transform hover:scale-110 active:scale-95 z-40 cursor-pointer"
               >
-                <svg
-                  width="24"
-                  height="24"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2.5"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                >
-                  <path d="M5 12h14M12 5l7 7-7 7" />
-                </svg>
+                <ArrowRight />
               </button>
             </div>
+
+            {decors && (
+              <img
+                src={decors}
+                alt=""
+                className="absolute left-[67px] top-[24px] h-22 w-22 z-50 pointer-events-none"
+              />
+            )}
+            {decors && (
+              <img
+                src={decors}
+                alt=""
+                className="absolute right-20 top-[193px] h-22 w-22 z-50 pointer-events-none scale-x-[-1]"
+              />
+            )}
           </>
         )}
       </div>
@@ -137,7 +135,7 @@ const Cards = ({
             <img
               src={slides[0].image}
               alt={slides[0].title}
-              className={`absolute z-50  w-auto max-w-none animation-updown ${imagePosition}`}
+              className={`absolute z-40  w-auto max-w-none animation-updown ${imagePosition}`}
             />
           </div>
 

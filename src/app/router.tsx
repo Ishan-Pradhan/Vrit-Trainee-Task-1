@@ -1,6 +1,7 @@
 import { createBrowserRouter } from "react-router";
 import SkillJourneyPage from "../pages/skill-journey/SkillJourneyPage";
 import Homepage from "../pages/homepage/Homepage";
+import WhatsHotPage from "../pages/whats-hot/WhatsHotPage";
 
 export const router = createBrowserRouter([
   {
@@ -13,6 +14,6 @@ export const router = createBrowserRouter([
   },
   {
     path: "whats-hot",
-    element: <Homepage />,
+    element: <WhatsHotPage />,
   },
 ]);

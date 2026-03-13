@@ -1,4 +1,6 @@
+import { ArrowLeft } from "lucide-react";
 import Cards from "../../components/skilljourney/Cards";
+import { useNavigate } from "react-router";
 
 const card1Data = [
   {
@@ -15,6 +17,29 @@ const card1Data = [
     textPosition: "justify-end ",
   },
 ];
+
+const card2Data = [
+  {
+    title: "Learn by Doing",
+    featureEmphasis: "Practical skills, real projects.",
+    description:
+      "Theory is great, but action is better. At SkillShikshya, you learn by doing. Hands-on projects and real-world scenarios help you build, break, and create—leading to true mastery.",
+    image: "skilljourney/cardsecond1.png",
+  },
+  {
+    image: "skilljourney/cardsecond2.png",
+    description: "Focused faces—learning mode: ON!",
+    imagePosition: "w-[572px] h-[329px] -bottom-10 left-15 ",
+    textPosition: "justify-start ml-5 mt-5 w-full",
+  },
+  {
+    image: "skilljourney/cardsecond3.png",
+    description: "Laptops, lessons, and a whole lot of growth!",
+    imagePosition: "w-[572px] h-[329px] -bottom-10 left-4 ",
+    textPosition: "justify-center text-center",
+  },
+];
+
 const card3Data = [
   {
     title: "Get Mentored & Supported",
@@ -34,37 +59,23 @@ const card4Data = [
   },
 ];
 
-const card2Data = [
-  {
-    title: "Learn by Doing",
-    featureEmphasis: "Practical skills, real projects.",
-    description:
-      "Theory is great, but action is better. At SkillShikshya, you learn by doing. Hands-on projects and real-world scenarios help you build, break, and create—leading to true mastery.",
-    image: "skilljourney/cardsecond1.png",
-  },
-  {
-    image: "skilljourney/cardsecond2.png",
-    description: "Focused faces—learning mode: ON!",
-    imagePosition: "w-[572px] h-[329px] -bottom-10 left-4 ",
-    textPosition: "justify-start ml-5 ",
-  },
-  {
-    image: "skilljourney/cardsecond3.png",
-    description: "Laptops, lessons, and a whole lot of growth!",
-    imagePosition: "w-[572px] h-[329px] -bottom-10 left-4 ",
-    textPosition: "justify-center text-center",
-  },
-];
-
 const SkillJourneyPage = () => {
+  const navigate = useNavigate();
   return (
-    <section className="container mx-auto my-10">
+    <section className="container mx-auto my-15">
       <div className="flex flex-col gap-12">
+        <button
+          className="flex gap-2 items-center hover:underline cursor-pointer"
+          onClick={() => navigate("/")}
+        >
+          <ArrowLeft />
+          <p className="text-xl tracking-normal">Back to Home</p>
+        </button>
         <div className="flex flex-col gap-6">
           <p className="feature-emphasis">Your SkillShikshya Journey</p>
           <p className="display-3 ">
-            <span className="text-[#1DA077]">Step</span> In.{" "}
-            <span className="text-[#1DA077]">Step</span> Up.{" "}
+            <span className="text-[#1DA077]">Step</span> In.
+            <span className="text-[#1DA077]">Step</span> Up.
             <span className="text-[#1DA077]">Step</span> Out. 🚀
           </p>
         </div>
@@ -75,6 +86,7 @@ const SkillJourneyPage = () => {
             edgeColor="skilljourney/edge.png"
             imagePosition="-left-33 top-[22px]"
             shadow={true}
+            decors="skilljourney/wowleft.png"
           />
           <Cards
             slides={card2Data}
