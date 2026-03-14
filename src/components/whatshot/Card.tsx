@@ -39,7 +39,7 @@ const Card = ({
 
   return (
     <div
-      className={`h-[461px] rounded-[32px] p-10 pb-5 transition-all duration-1000 ease-in-out cursor-pointer relative flex flex-col overflow-hidden  ${
+      className={`xl:h-[461px] lg:h-[400px] md:h-[300px] rounded-[32px] xl:p-10 lg:p-4 md:p-6 p-4 pb-5 transition-all duration-1000 ease-in-out cursor-pointer relative flex flex-col overflow-hidden  ${
         isActive
           ? "flex-2 bg-[#C33241] justify-between"
           : "flex-1 justify-between"
@@ -59,16 +59,19 @@ const Card = ({
         }`}
       >
         <Link
-          to="/skill-journey"
-          className="flex items-center gap-2 group font-outfit font-semibold text-[18px] text-white "
+          to="/task-1"
+          className="flex items-center gap-2 group font-outfit font-semibold lg:text-[18px] text-[14px] text-white "
         >
           <span>View all Courses</span>{" "}
-          <ArrowRight className="left-right transition-all duration-300" />
+          <ArrowRight
+            size={20}
+            className="left-right transition-all duration-300 "
+          />
         </Link>
       </div>
 
       <div
-        className={`flex justify-center gap-10.5 ${
+        className={`flex justify-center gap-10.5 lg:h-auto md:h-[150px] h-[100px] items-center ${
           isEntering
             ? `${enterClass} opacity-0`
             : isExiting
@@ -76,17 +79,33 @@ const Card = ({
               : "opacity-0 pointer-events-none"
         }`}
       >
-        <img src="whatshot/react.png" alt="" className=" h-[75px]" />
-        <img src="whatshot/socials.png" alt="" className=" h-[75px]" />
-        <img src="whatshot/vue.png" alt="" className=" h-[75px] scale-150" />
-        <img src="whatshot/pencil.png" alt="" className=" h-[75px]" />
+        <img
+          src="whatshot/react.png"
+          alt="react image"
+          className=" xl:h-[75px] lg:h-[50px] md:h-[50px] h-[30px]"
+        />
+        <img
+          src="whatshot/socials.png"
+          alt="socials image"
+          className=" xl:h-[75px] lg:h-[50px] md:h-[50px] h-[30px]"
+        />
+        <img
+          src="whatshot/vue.png"
+          alt="vue image"
+          className=" xl:h-[75px] lg:h-[50px] md:h-[50px] h-[30px] scale-150"
+        />
+        <img
+          src="whatshot/pencil.png"
+          alt="pencil image"
+          className=" xl:h-[75px] lg:h-[40px] md:h-[50px] h-[30px]"
+        />
       </div>
 
-      <div className="relative h-[150px] w-full">
+      <div className="relative xl:h-[150px] lg:h-[100px] md:h-[100px] h-[60px] w-full">
         <div
-          className={`font-nohemi font-bold xl:text-[150px] lg:text-[130px] md:text-[80px] text-[60px] leading-[80%] lg:bottom-3 transition-all duration-1000 ease-in-out absolute bottom-0 flex  items-start justify-start  ${
+          className={`font-nohemi font-bold xl:text-[150px] lg:text-[80px] md:text-[80px] text-[60px] leading-[80%] lg:bottom-3 transition-all duration-1000 ease-in-out absolute bottom-0 flex  items-start justify-start  ${
             isActive
-              ? "text-white left-0"
+              ? "text-white lg:left-0 md:left-20 left-5"
               : "text-[#C33241] left-1/2 -translate-x-1/2"
           }`}
         >
@@ -94,16 +113,18 @@ const Card = ({
           <span className="text-[50px] -mt-4 leading-none">+</span>
         </div>
         <div
-          className={`flex flex-col gap-3 absolute left-1/2 top-1/2 transition-all duration-1000 ease-in-out transform-gpu origin-center w-58 ${
+          className={`flex flex-col gap-3 absolute left-1/2 top-1/2 transition-all duration-1000 ease-in-out transform-gpu origin-center xl:w-58 lg:w-48 md:w-58 w-40  ${
             isActive
-              ? "text-white translate-x-[10%] -translate-y-[50%]  rotate-0"
-              : "text-[#C33241] -translate-x-1/2 -translate-y-70 -rotate-90"
+              ? "text-white xl:translate-x-[10%] lg:-translate-x-[10%] md:-translate-x-[10%] -translate-x-[10%] lg:-translate-y-[50%] md:-translate-y-[40%] -translate-y-[50%]  rotate-0"
+              : "lg:text-left text-center text-[#C33241] lg:-translate-x-1/2 md:-translate-x-30 -translate-x-20 xl:-translate-y-70 lg:-translate-y-60 md:-translate-y-40 -translate-y-35 lg:-rotate-90"
           } ${isActive ? "recoil-text-enter" : "recoil-text-exit"}`}
         >
-          <span className="text-[32px] font-bold leading-[100%] font-outfit ">
+          <span className="xl:text-[32px] lg:text-[20px] md:text-[20px] text-[18px] font-bold leading-[100%] font-outfit ">
             {cardData.title}
           </span>
-          <p className="text-[18px] font-outfit">{cardData.description}</p>
+          <p className="xl:text-[18px] lg:text-[16px] md:text-[16px] text-[14px] font-outfit">
+            {cardData.description}
+          </p>
         </div>
       </div>
     </div>

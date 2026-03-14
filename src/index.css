@@ -113,15 +113,15 @@
 
 @layer components {
   .display-3 {
-    @apply text-[32px] font-nohemi font-bold leading-[120%]  tracking-normal;
+    @apply xl:text-[32px] font-nohemi font-bold leading-[120%]  tracking-normal lg:text-[24px] md:text-[20px] text-[18px];
   }
 
   .feature-emphasis {
-    @apply text-[24px] font-outfit font-medium leading-[100%]  tracking-normal;
+    @apply xl:text-[24px] font-outfit font-medium leading-[100%]  tracking-normal lg:text-[18px] md:text-[16px] text-[14px];
   }
 
   .highlight-standard {
-    @apply text-[18px] font-outfit font-light leading-[120%]  tracking-normal;
+    @apply xl:text-[18px] font-outfit font-light leading-[120%]  tracking-normal lg:text-[16px] md:text-[14px] text-[12px];
   }
 }
 
@@ -252,7 +252,7 @@
 @keyframes left-right {
   0%,
   100% {
-    transform: translateX(-10px);
+    transform: translateX(10px);
   }
   100% {
     transform: translateX(0px);

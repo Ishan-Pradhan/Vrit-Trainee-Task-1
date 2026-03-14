@@ -45,7 +45,7 @@ const Cards = ({
 
   return (
     <div
-      className={`group relative w-full h-[341px] ${isExpandable ? "z-40" : "z-0"}`}
+      className={`group relative w-full xl:h-[341px] lg:h-[281px] md:h-[241px] h-[201px] ${isExpandable ? "z-40" : "z-0"}`}
     >
       <div
         style={{ backgroundColor: color }}
@@ -58,22 +58,22 @@ const Cards = ({
             >
               <img
                 src={carouselSlides[carouselIndex].image}
-                alt=""
+                alt={carouselSlides[carouselIndex].title}
                 className={`absolute ${shadow ? "drop-shadow-[10px_0px_0px_rgba(0,0,0,1)]" : ""} z-40 ${carouselSlides[carouselIndex].imagePosition}`}
               />
               {carouselSlides[carouselIndex].description && (
-                <p className="highlight-standard text-[#FAFAFA] w-[50%] font-nohemi font-bold leading-[120%] tracking-normal text-xl mt-10 px-5 z-30 ">
+                <p className=" text-[#FAFAFA] xl:w-[50%] lg:w-[50%] md:w-[50%] w-[40%] font-nohemi font-bold leading-[120%] tracking-normal xl:text-xl lg:text-xl md:text-xl text-base xl:mt-10 lg:mt-10 md:mt-10 mt-2 xl:px-5 lg:px-5 md:px-15 xl:mr-0 lg:mr-0 md:mr-0 mr-10 z-30 ">
                   {carouselSlides[carouselIndex].description}
                 </p>
               )}
             </div>
 
-            <div className="absolute left-0 bg-white top-1/2 -translate-y-1/2 h-24 w-18" />
-            <div className="absolute right-0 bg-white top-1/2 -translate-y-1/2 h-24 w-18" />
+            <div className="absolute -left-1 bg-white top-1/2 -translate-y-1/2 h-24 w-19" />
+            <div className="absolute -right-1 bg-white top-1/2 -translate-y-1/2 h-24 w-19" />
             <img
               src={`${edgeColor}`}
               alt=""
-              className="absolute left-0 top-1/2 -translate-y-1/2 h-28  transform scale-x-[-1] pointer-events-none after:bg-white after:h-28 after:w-28"
+              className="absolute left-0 top-1/2 -translate-y-1/2 h-28 w-futo  transform scale-x-[-1] pointer-events-none"
             />
 
             <img
@@ -102,14 +102,14 @@ const Cards = ({
               <img
                 src={decors}
                 alt=""
-                className="absolute left-[67px] top-[24px] h-22 w-22 z-50 pointer-events-none"
+                className="absolute xl:left-[67px] lg:left-[40px] md:left-[40px] left-[35px] xl:top-[24px] lg:top-[20px] md:top-[10px] top-[4px] xl:h-22 xl:w-22 lg:h-20 lg:w-20 md:h-18 md:w-18 h-12 w-12 z-50 pointer-events-none"
               />
             )}
             {decors && (
               <img
                 src={decors}
                 alt=""
-                className="absolute right-20 top-[193px] h-22 w-22 z-50 pointer-events-none scale-x-[-1]"
+                className="absolute xl:right-20 lg:right-10 md:right-50 right-20 xl:top-[193px] lg:top-[193px] md:top-[110px] top-[150px] xl:h-22 xl:w-22 lg:h-20 lg:w-20 md:h-18 md:w-18 h-12 w-12 z-50 pointer-events-none scale-x-[-1]"
               />
             )}
           </>
@@ -125,7 +125,7 @@ const Cards = ({
         } ${carouselIndex > 0 ? "hidden" : ""}`}
       >
         <div
-          className={`flex h-full w-full items-center px-12 ${
+          className={`flex h-full w-full items-center xl:px-12 lg:px-10 md:px-8 px-4 ${
             imageLocation === "right"
               ? "flex-row-reverse text-left"
               : "flex-row text-right"
@@ -135,7 +135,7 @@ const Cards = ({
             <img
               src={slides[0].image}
               alt={slides[0].title}
-              className={`absolute z-40  w-auto max-w-none animation-updown ${imagePosition}`}
+              className={`absolute z-40  animation-updown ${imagePosition}`}
             />
           </div>
 

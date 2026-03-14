@@ -51,7 +51,7 @@ const WhatsHotPage = () => {
           </p>
         </div>
 
-        <div className="flex flex-col lg:flex-row gap-8 h-[461px]">
+        <div className="flex flex-col lg:flex-row gap-8">
           {cardData.map((data, index) => (
             <Card
               key={index}

@@ -9,11 +9,11 @@ export const router = createBrowserRouter([
     element: <Homepage />,
   },
   {
-    path: "skill-journey",
+    path: "task-1",
     element: <SkillJourneyPage />,
   },
   {
-    path: "whats-hot",
+    path: "task-2",
     element: <WhatsHotPage />,
   },
 ]);

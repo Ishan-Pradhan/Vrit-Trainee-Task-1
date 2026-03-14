@@ -2,6 +2,8 @@ import { ArrowLeft } from "lucide-react";
 import Cards from "../../components/skilljourney/Cards";
 import { useNavigate } from "react-router";
 
+//TODO: remove imagePosition and textPosition from card data and pass it as props to Cards component
+
 const card1Data = [
   {
     title: "Start with Clarity",
@@ -13,7 +15,8 @@ const card1Data = [
   {
     image: "skilljourney/cardfirst2.png",
     description: "Clarity unlocked—stickers, sips, and skills all in one go!",
-    imagePosition: "w-[370px] h-[370px] bottom-0 left-4 rounded-l-[30px]",
+    imagePosition:
+      "xl:w-[370px] xl:h-[370px] bottom-0 left-4 rounded-l-[30px] lg:w-[280px] lg:h-[280px] md:w-[220px] md:h-[220px] w-[200px] h-[200px]",
     textPosition: "justify-end ",
   },
 ];
@@ -29,13 +32,15 @@ const card2Data = [
   {
     image: "skilljourney/cardsecond2.png",
     description: "Focused faces—learning mode: ON!",
-    imagePosition: "w-[572px] h-[329px] -bottom-10 left-15 ",
-    textPosition: "justify-start ml-5 mt-5 w-full",
+    imagePosition:
+      "xl:w-[572px] xl:h-[329px] xl:-bottom-10 lg:-bottom-5 md:-bottom-10 -bottom-10 xl:left-15 lg:left-10 md:left-50 -left-14 lg:w-auto lg:h-[220px] md:w-auto md:h-[220px] w-auto h-[180px] ",
+    textPosition: "justify-start xl:ml-5 lg:ml-13 md:ml-5 ml-18 mt-5 ",
   },
   {
     image: "skilljourney/cardsecond3.png",
     description: "Laptops, lessons, and a whole lot of growth!",
-    imagePosition: "w-[572px] h-[329px] -bottom-10 left-4 ",
+    imagePosition:
+      "xl:w-[572px] xl:h-[329px] lg:w-auto lg:h-[280px] md:w-auto md:h-[260px] w-auto h-[229px] -bottom-10 left-1/2 -translate-x-1/2 ",
     textPosition: "justify-center text-center",
   },
 ];
@@ -84,7 +89,7 @@ const SkillJourneyPage = () => {
             slides={card1Data}
             color="#F45B5B"
             edgeColor="skilljourney/edge.png"
-            imagePosition="-left-33 top-[22px]"
+            imagePosition="xl:-left-33 xl:top-[22px] lg:-left-33 lg:top-10 md:-left-10 md:top-1 -left-10 top-10 xl:w-auto xl:max-w-none lg:w-60 lg:max-w-60 md:w-50 md:max-w-50 w-35 max-w-35"
             shadow={true}
             decors="skilljourney/wowleft.png"
           />
@@ -93,20 +98,20 @@ const SkillJourneyPage = () => {
             imageLocation="right"
             color="#5492A0"
             edgeColor="skilljourney/edge1.png"
-            imagePosition="-right-10 top-4"
+            imagePosition="-right-10 top-4 lg:-right-16 lg:top-4 md:-right-10 md:top-4 -right-10 top-5 xl:w-auto xl:max-w-none lg:w-auto lg:max-w-auto lg:h-80 md:w-auto  md:max-w-auto md:h-60 w-35 max-w-35"
             shadow={false}
           />
           <Cards
             slides={card3Data}
             color="#6C64A8"
-            imagePosition="-left-38 -bottom-15"
+            imagePosition="xl:-left-38 xl:-bottom-15 lg:-left-38 lg:-bottom-15 md:-left-10 md:-bottom-10 -left-15 bottom-0 xl:w-auto xl:max-w-none xl:h-auto lg:w-70 lg:max-w-70 lg:h-auto md:w-60 md:max-w-60 md:h-auto w-40 max-w-40"
             shadow={false}
           />
           <Cards
             slides={card4Data}
             imageLocation="right"
             color="#A88964"
-            imagePosition="-right-30 -bottom-15"
+            imagePosition="xl:-right-30 xl:-bottom-15 lg:-right-30 lg:-bottom-15 md:-right-10 md:-bottom-15 -right-8 bottom-0 xl:w-auto xl:max-w-none lg:w-70 lg:max-w-70 md:w-60 md:max-w-60 w-35 max-w-35"
             shadow={false}
           />
         </div>
