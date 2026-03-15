@@ -42,8 +42,9 @@ const WhatsHotPage = () => {
           <p className="text-xl tracking-normal">Back to Home</p>
         </button>
         <div className="flex flex-col gap-6">
+          <h1 className="sr-only">What's Hot - Explore Trending Skills</h1>
           <p className="feature-emphasis">
-            Explore our classes and master trending sillls!
+            Explore our classes and master trending skills!
           </p>
           <p className="display-3 ">
             Dive Into
